@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My first page on a server</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        
+        <link rel="stylesheet" href="style.css"></style>
+        
+       
+       <script src="/app.js"></script>
+
+    </head>
+    <body>
+        <h1> Movie-theatres in Amsterdam </h1>
+
+         
+        
+        <label id="redlabel"> Show me .. </label>
+
+        <div id="button">
+        <div id='choicePom'>
+            <input name= "choicePom" type="submit" value="Price of a movie">
+        </div>
+        <div id='choicePob'>
+            <input name= "choicePob" type="submit" value="Price for one beer">
+        </div>
+        <div id='choiceDto'>
+            <input name= "choiceDto" type="submit" 
+            value="Distance to OHMP">
+        </div>
+    </div>
+
+
+    <div id="barchart"></div>
+    <p></p>
+
+    <ul id ="hide">
+    <label style="font-size:11px;">legenda</label>
+    <li style="color:purple;"> Jeffrey shows his movies here</li>
+    <li style="color:orange;"> This is very underground, because it has no category</li>
+    <li style="color:blue;"> It's part of the cineville</li>
+    <li style="color:yellow;">If you want to know the end of the film before the film even started, go to pathe</li></ul>
+
+    <p></p><p></p>
+
+    <label id="redlabel"> Add a movie-theatre!</label>
+    <div id='addMovieTheatre'>
+        <label for="movieTheatre" class="label">Movie-theatre</label>
+        <input name="movieTheatre" type='text' id='movieTheatre' placeholder='Name'> </div>
+    <div id='addMovieTheatre'>
+        <label for="kindOf" class="label">Kind of Movie-theatre</label>
+        <select name="kindOf" id='kindOf'>
+            <option>Choose the kind of movie-theatre</option>
+            <option>Cineville</option>
+            <option>Pathe</option>
+            <option>Jeffrey</option>
+            <option>Other</option>
+        </select>
+    </div>
+    <div>
+        <label for="price" class="label">Price for one Movie</label>
+        <input name="price" type='number' step ="0.5" max="15" id='price' placeholder='price'>
+     </div>
+    <div>
+        <label for="bikeDistance" class="label">Bike Distance from OHMP</label>
+        <input name="bikeDistance" type='number' step='0,5' "max=15" id='bikeDistance' placeholder='bikeDistance'>
+    </div>
+    <div>
+        <label for="priceofBeer" class="label">Price of Beer</label>
+        <input name="priceofBeer" type="number" step='any' max="5" id='priceofBeer' placeholder='priceofBeer'>
+    </div>
+    <div>
+        <label for="urlTheatre" class="label">Website</label>
+        <input name="urlTheatre" type="text" id='urlTheatre' placeholder='urlTheatre'>
+    </div>
+    </div>
+    <div id='submitForm'>
+            <input name= "submitForm" type="submit" value="Click to submit movie-theatre!">
+    </div>
+    </div>
+    </body>
+</html>

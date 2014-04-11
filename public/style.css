@@ -1,0 +1,56 @@
+.axis path,
+            .axis line {
+             fill: none;
+             stroke: black;
+             shape-rendering: crispEdges;
+                }
+
+            .axis text {
+                 font-family: arial;
+                 font-size: 11px;
+                }
+
+            #redlabel
+            {
+                color: red;
+                font-family: arial;
+            }
+
+            h1 {
+                color: white;
+                font-family: arial;
+            }
+
+            li {
+                font-family: arial;
+                font-size: 11px;
+                }
+
+            
+
+            label {   
+                color: white;
+                font-size: 16px;
+                font-family: arial;
+                }
+
+            input {
+                color: red;
+                border: 2px;
+            }
+
+                       html { 
+  background: url(http://cineville.nl/sites/all/files/imagecache/header_bigger_169/blog/cineville_wallpaper_2560x1600_B.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+        body {
+            background-color: grey;
+            opacity: 0.7;
+        }
+
+            rect {opacity: 1;}
+            rect:hover {opacity: 0.3;}
