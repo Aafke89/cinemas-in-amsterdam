@@ -1,11 +1,8 @@
 var myDataRef = new Firebase('https://movietheatresamstrdm.firebaseio.com/dataset');
 
 // put new variables in firebase
-$(document).ready(function(){
 
             $("#submitForm").on("click", function(){
-              alert ("Thanks for adding a movie-theatre!");
-
                     var movieTheatre = $('#movieTheatre').val();
                     var price = $('#price').val();
                     var bikeDistance = $('#bikeDistance').val();
@@ -18,11 +15,10 @@ $(document).ready(function(){
 
                 
             });
-            });
 
 
 
-           var showThis;
+           var showThis = [];
 
             $("#choicePom").on("click", function(){
                     return showThis = "pom";               
@@ -37,8 +33,6 @@ $(document).ready(function(){
 
             }); 
 
-          
-
 // create a new variable of choice
            /*var choice = function(d) {return d.price};
 
@@ -51,10 +45,11 @@ $(document).ready(function(){
       
         //including data as long as firebasereference doesn't work
 
-        var d;
+        /*var data  = [];
 
-        d3.json('https://movietheatresamstrdm.firebaseio.com/dataset.json', function(data) {
-     d = Object.keys(data).map(function(key){return data[key]}); }); /*
+        d3.json("https://movietheatresamstrdm.firebaseio.com/dataset.json", function (d) {
+            return data = d.dataset;
+        }); */
 
         var data = [
         {
@@ -96,15 +91,13 @@ $(document).ready(function(){
       "kindOf" : "cineville",
       "movieTheatre" : "Cinecentre",
       "url" : "http://www.cinecenter.nl/"
-    }]; */
+    }];
 
 
     $(document).ready(function(){
 
     $("#button").on("click", function()
             { alert ("Look at this beautiful barchart!");
-
-
       
       var margin = {top: 20, right: 20, bottom: 100, left: 40},
             width = 500 - margin.left - margin.right,
@@ -113,7 +106,7 @@ $(document).ready(function(){
         var barPadding = 2;
 
         var x = d3.scale.ordinal()
-            .domain(d3.range(d.length))
+            .domain(d3.range(data.length))
             .rangeRoundBands([0, width], .1);
 
        /* var x = d3.scale.ordinal()
@@ -121,15 +114,15 @@ $(document).ready(function(){
             .rangeRoundBands([0, width], .1); */
 
         var y = d3.scale.linear()
-            .domain([0, d3.max(d, function (d) { 
+            .domain([0, d3.max(data, function (d) { 
                 if 
                     (showThis == "pob")
-                    {return d["priceofBeer"]}
+                    {return d.priceofBeer;}
                 else if 
                     (showThis == "pom")
-                    {return d["price"]}
+                    {return d.price;}
                 else
-                    {return d["bikeDistance"]}
+                    {return d.bikeDistance;}
             })])  
             .rangeRound([height, 0]);
 
@@ -148,7 +141,7 @@ $(document).ready(function(){
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            x.domain(d.map (function(d) {return d["movieTheatre"];}));
+            x.domain(data.map (function(d) {return d.movieTheatre;}));
 
             svg.append("g")
                 .attr("class", "x axis")
@@ -184,38 +177,38 @@ $(document).ready(function(){
 
 
             svg.selectAll("rect")
-            .data(d)
+            .data(data)
             .enter()
             .append("rect")
-            .attr("width", width/ d.length - barPadding)
+            .attr("width", width/ data.length - barPadding)
             .attr("height", function (d){ 
                 if 
                     (showThis == "pob")
-                    {return height - y(d["priceofBeer"]);}
+                    {return height - y(d.priceofBeer);}
                 else if 
                     (showThis == "pom")
-                    {return height - y(d["price"]);}
+                    {return height - y(d.price);}
                 else
-                    {return height - y(d["bikeDistance"]);}
+                    {return height - y(d.bikeDistance);}
             })           
             .attr("x", function(d, i) {
-                return i * (width / d.length) })
+                return i * (width / data.length) })
             .attr("y", function(d) { 
                 if 
                     (showThis == "pob")
-                    {return y(d["priceofBeer"]);}
+                    {return y(d.priceofBeer);}
                 else if 
                     (showThis == "pom")
-                    {return y(d["price"]);}
+                    {return y(d.price);}
                 else
-                    {return y(d["bikeDistance"]);}
+                    {return y(d.bikeDistance);}
             })               
              .attr("fill", function(d) {
-                if (d["kindOf"] == "cineville")
+                if (d.kindOf == "cineville")
                     {return "blue";}
-                else if (d["kindOf"] === "pathe")
+                else if (d.kindOf === "pathe")
                     {return "yellow";}
-                else if (d["kindOf"] === "jeffrey")
+                else if (d.kindOf === "jeffrey")
                     {return "orange";}
                 else 
                     {return "purple";}
@@ -224,7 +217,7 @@ $(document).ready(function(){
                 return d.url;
              })
              .on("click", function(d){
-                     window.location = d["url"];
+                     window.location = d.url;
            });                     
 
                     
